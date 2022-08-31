@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #070707;
+    --sizeindex: calc(1vw+1vh);
+    --transition: .5s cubic-bezier(0.345, 0.445, 0.665, 0.370);
+}
+@font-face{
+    font-family: raleway_m;
+    src: url(../font/Raleway-ExtraLight.woff2);
+    font-weight: 300;
+}
+
+@font-face{
+    font-family: raleway_m;
+    src: url(../font/Raleway-Black.woff2);
+    font-weight: 900;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark);
+    color: white;
+    font-family: raleway_m, sans-serif;
+    overflow: hidden;
+    line-height: 1.8;
+    font-size: calc(var(--sizeindex) * 1.5);
+}
+.slider {
+    margin-top: 10vh;
+    height: 95%;
+    overflow: visible;
+    transform: rotate(-6deg);
+}
+.slider__wrapper {
+    transition: var(--transition) !important;
+    will-change: transform;
+}
+.slider__item {
+    height: 40vw;
+    width: 25vw;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.slider_img {
+    z-index: -1;
+    width: 50vw;
+    height: 45vw;
+    position: absolute;
+    background-size: contain;
+    left: -40%;
+    top: -5%;
+    transition: var(--transition) !important;
+    filter: saturate(1.1);
+
+
+}
+.slider_bg {
+    position: relative;
+    z-index: 0;
+    transform: rotate(6deg)!important;
+    top: -100vh;
+    left: -10vh;
+    opacity: 0.4;
+    filter: blur(120px) saturate(10) ;
+}
+.slider_bg .slider__item{
+    max-height: 80vh;
+}
+.slider__item.open {
+    z-index: 2;
+    transform: rotate(6deg) scale(1.4);
+    transition: var(--transition);
+    box-shadow: rgb(0 0 0 / .75) 0 0 0 10000px;
+}
+.description {
+    position: absolute;
+    font-size: calc(var(--sizeindex) * 1.5);
+    top: 20vh;
+    left: 8vw;
+    max-width: 18vw;
+    display: inline-block;
+    transition: var(--transition)
+}
+
+.logo {
+    font-size: calc(var(--sizeindex) * 4);
+    font-weight: 900;
+    display: inline-block;
+    line-height: 1;
+    background: linear-gradient(45deg, rgb(240, 129, 25), 
+    rgb(47, 222, 213), rgb(227, 27, 157));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hidden {
+    opacity: 0.5;
+    transition: var(--transition);
+    filter: blur(50px);
+}
